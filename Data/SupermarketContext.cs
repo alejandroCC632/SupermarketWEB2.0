@@ -13,5 +13,7 @@ namespace SupermarketWEB.Data
 
         public DbSet<PayMode> PayModes { get; set; }
 
+        public DbSet<Provider> Providers { get; set; }
+
     }
 }
