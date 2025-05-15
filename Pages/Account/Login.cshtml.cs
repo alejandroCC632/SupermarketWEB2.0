@@ -4,12 +4,18 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Identity.Client.Platforms.Features.DesktopOs;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
+using SupermarketWEB.Data;
+using SupermarketWEB.Models;
 
 namespace SupermarketWEB.Pages.Account
 {
 
     public class LoginModel : PageModel
     {
+        
+
+
+
         [BindProperty]
         public User User {  get; set; }
         public void OnGet()
