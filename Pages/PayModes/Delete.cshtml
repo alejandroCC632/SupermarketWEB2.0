@@ -1,0 +1,33 @@
+﻿@page
+@model SupermarketWEB.Pages.PayModes.DeleteModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete PayMode</h1>
+
+<h3>¿Estás seguro de que quieres eliminar esto?</h3>
+<div>
+    <h4>Paymode</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.payMode.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.payMode.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.payMode.Observation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.payMode.Observation)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="payMode.Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <a asp-page="./Index" class="btn btn-primary">Volver a la Lista</a>
+    </form>
+</div>
