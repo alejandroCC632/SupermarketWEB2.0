@@ -15,6 +15,7 @@ namespace SupermarketWEB
             builder.Services.AddAuthentication().AddCookie("MyCookieAuth", options =>
             {
                 options.Cookie.Name = "MyCookieAuth";
+                options.LoginPath = "/Account/Login"; // Si no esta Autenticado, cargue la pagina login 
             });
 
             //Agregando el contexto SupermarketCOnext a la Aplicacion
