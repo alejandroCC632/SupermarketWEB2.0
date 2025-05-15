@@ -20,7 +20,7 @@ namespace SupermarketWEB.Pages.Providers
             return Page ();
         }
         [BindProperty]
-        public Provider Providers { get; set; } = default;
+        public Provider Providers { get; set; } = default!;
 
         public async Task<IActionResult> OnPostAsync()
         {

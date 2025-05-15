@@ -21,7 +21,7 @@ namespace SupermarketWEB.Pages.PayModes
             return Page();
         }
         [BindProperty]
-        public PayMode payMode { get; set; } = default;
+        public PayMode payMode { get; set; } = default!;
 
         public async Task<IActionResult> OnPostAsync()
         {
