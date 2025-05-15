@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Identity.Client.Platforms.Features.DesktopOs;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 
 namespace SupermarketWEB.Pages.Account
 {
@@ -27,11 +28,13 @@ namespace SupermarketWEB.Pages.Account
                     new Claim(ClaimTypes.Email,User.Email),
                 };
                 // Se asoscia los claims creados a un nombre de una Cookie
+                var identity = new ClaimsIdentity(claims, "MyCookieAuth");
+                // Se agrega la identidad creada al Claims Pincipal de la aplicacion 
+                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
 
-
-
-
-                return RedirectToPage("/index");
+                //Se registra exitosamente la autenticacion y se crea la Cookie en el navegador 
+                await HttpContext.SignInAsync("MyCookieAuth", claimsPrincipal);
+                return RedirectToPage("/Index");
             }
             return Page();
         
