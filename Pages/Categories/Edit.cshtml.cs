@@ -34,7 +34,7 @@ namespace SupermarketWEB.Pages.Categories
             return Page();
         }
 
-        public async Task<IActionResult> OnpostAsync()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
