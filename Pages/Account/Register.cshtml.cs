@@ -37,7 +37,7 @@ namespace SupermarketWEB.Pages.Account
         {
             if (ModelState.IsValid)
             {
-                // Verificar que no exista otro usuario con el mismo email
+               
                 var exists = _context.Users.Any(u => u.Email == Input.Email);
                 if (exists)
                 {
@@ -49,13 +49,12 @@ namespace SupermarketWEB.Pages.Account
                 
                 
 
-                // Guardar el usuario
+                
                 var newUser = new Users
                 {
 
                     Email = Input.Email,
-                    Password = Input.Password, // Se guarda en texto plano (inseguro en producción)
-                    Salt = ""
+                    Password = Input.Password, 
                 };
 
                 _context.Users.Add(newUser);
