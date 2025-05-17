@@ -11,19 +11,23 @@ namespace SupermarketWEB
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-
-            builder.Services.AddAuthentication().AddCookie("MyCookieAuth", options =>
-            {
-                options.Cookie.Name = "MyCookieAuth";
-                options.LoginPath = "/Account/Login"; // Si no esta Autenticado, cargue la pagina login 
-            });
-
-            //Agregando el contexto SupermarketCOnext a la Aplicacion
             builder.Services.AddDbContext<SupermarketContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("SupermarketDB"))
-            );
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            builder.Services.AddAuthentication("MyCookieAuth")
+                .AddCookie("MyCookieAuth", config =>
+                {
+                    config.LoginPath = "/Login";
+                });
+
+            builder.Services.AddRazorPages();
             var app = builder.Build();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+
+
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

@@ -1,0 +1,32 @@
+﻿@page
+@model SupermarketWEB.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<h2>Registro de Usuario</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="NewUser.Email" class="form-label"></label>
+        <input asp-for="NewUser.Email" class="form-control" />
+        <span asp-validation-for="NewUser.Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="NewUser.Password" class="form-label"></label>
+        <input asp-for="NewUser.Password" type="password" class="form-control" />
+        <span asp-validation-for="NewUser.Password" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrarse</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-info mt-3">@Model.Message</div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

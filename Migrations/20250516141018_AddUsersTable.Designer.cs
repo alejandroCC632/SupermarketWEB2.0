@@ -11,7 +11,7 @@ using SupermarketWEB.Data;
 namespace SupermarketWEB.Migrations
 {
     [DbContext(typeof(SupermarketContext))]
-    [Migration("20250515153014_AddUsersTable")]
+    [Migration("20250516141018_AddUsersTable")]
     partial class AddUsersTable
     {
         /// <inheritdoc />
@@ -146,7 +146,7 @@ namespace SupermarketWEB.Migrations
                     b.ToTable("Providers");
                 });
 
-            modelBuilder.Entity("SupermarketWEB.Models.User", b =>
+            modelBuilder.Entity("SupermarketWEB.Models.Users", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

@@ -143,7 +143,7 @@ namespace SupermarketWEB.Migrations
                     b.ToTable("Providers");
                 });
 
-            modelBuilder.Entity("SupermarketWEB.Models.User", b =>
+            modelBuilder.Entity("SupermarketWEB.Models.Users", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
