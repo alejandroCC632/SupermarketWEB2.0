@@ -1,7 +1,7 @@
 ﻿@page
 @model SupermarketWEB.Pages.Account.LoginModel
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Log in";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group">
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                        <a asp-page="/Account/Register">Register as a new user</a>
                     </p>
                 </div>
             </form>

@@ -10,15 +10,17 @@ namespace SupermarketWEB
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddRazorPages();
-            builder.Services.AddDbContext<SupermarketContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
             builder.Services.AddAuthentication("MyCookieAuth")
-                .AddCookie("MyCookieAuth", config =>
-                {
-                    config.LoginPath = "/Login";
-                });
+      .AddCookie("MyCookieAuth", options =>
+      {
+          options.Cookie.Name = "MyCookieAuth";
+          options.LoginPath = "/Account/Login"; // Ruta al login
+      });
+
+            builder.Services.AddAuthorization();
+
+            builder.Services.AddDbContext<SupermarketContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("SupermarketDB")));
 
             builder.Services.AddRazorPages();
             var app = builder.Build();

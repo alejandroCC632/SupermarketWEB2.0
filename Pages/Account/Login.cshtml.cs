@@ -74,10 +74,10 @@ namespace SupermarketWEB.Pages.Account
                 if (existingUser != null)
                 {
                     // Hash de la contraseña ingresada para comparar
-                    string hashedPassword = HashPassword(Input.Password, Convert.FromBase64String(existingUser.Salt));
+                  
 
                     // Verificar si las contraseñas coinciden
-                    if (hashedPassword == existingUser.Password)
+                    if (Input.Password == existingUser.Password)
                     {
                         // Las credenciales son válidas, crear los Claims
                         var claims = new List<Claim>
@@ -95,13 +95,13 @@ namespace SupermarketWEB.Pages.Account
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                        ModelState.AddModelError(string.Empty, "Invalid login.");
                         return Page();
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Invalid login.");
                     return Page();
                 }
             }
@@ -110,16 +110,6 @@ namespace SupermarketWEB.Pages.Account
             return Page();
         }
 
-        private string HashPassword(string password, byte[] salt)
-        {
-            // Usa los mismos parámetros que en el registro
-            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: password,
-                salt: salt,
-                prf: KeyDerivationPrf.HMACSHA256,
-                iterationCount: 10000,
-                numBytesRequested: 256 / 8));
-            return hashed;
-        }
+     
     }
 }
